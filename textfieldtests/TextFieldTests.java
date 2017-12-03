@@ -6,11 +6,14 @@
 package textfieldtests;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 /**
@@ -23,6 +26,7 @@ public class TextFieldTests {
     private JLabel instructionlabel;
     // as mentioned by talnicolas
     private JTextArea inputUML;
+    private JTextField textField;
     
 
     // Don't give a method the same name as a class!!
@@ -49,6 +53,22 @@ public class TextFieldTests {
         // add it to a scrollpane
         CreationPanel.add(new JScrollPane(inputUML),BorderLayout.CENTER);
 
+        textField = new JTextField(40);
+        textField.setEditable(false);
+        
+        textField.addActionListener(new ActionListener() {
+			
+            @Override
+		public void actionPerformed(ActionEvent arg0) {
+                        String text = textField.getText();
+			textField.setText(text);
+				
+			}
+		});
+        
+        
+        
+        
         frame.add(CreationPanel);
 
         frame.pack();   // assume the natural size!
