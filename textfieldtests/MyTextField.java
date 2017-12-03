@@ -41,9 +41,11 @@ public class MyTextField  {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                if(secTextArea.getText().length()>0){
                 String text= secTextArea.getText();
                 textArea.append(text+"\n");
                 secTextArea.setText("");
+                }
             }
         });
         creationpanel.add(button, BorderLayout.EAST);
@@ -74,13 +76,14 @@ public class MyTextField  {
 
             @Override
             public void keyPressed(KeyEvent ke) {        
-                
-                if(ke.getKeyCode() == KeyEvent.VK_ENTER)
-                {
-                    System.out.println("enter");
-                String text= secTextArea.getText();
-                textArea.append(text);
-                secTextArea.setText("");
+                if(secTextArea.getText().length()!=0){
+                    if(ke.getKeyCode() == KeyEvent.VK_ENTER)
+                    {
+                        System.out.println("enter");
+                    String text= secTextArea.getText();
+                    textArea.append(text);
+                    secTextArea.setText("");
+                }
                 }
 
             }
